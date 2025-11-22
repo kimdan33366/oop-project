@@ -11,6 +11,7 @@ public class Main{
         scan.nextLine(); 
         System.out.print("Enter Sex: ");
         String Sex = scan.nextLine();
+       System.out.println(" dunno much");
 
         guest guest1 = new guest(lname, fname, age, Sex);
 
