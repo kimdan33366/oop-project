@@ -20,19 +20,19 @@ while (true) {
             case 1:
                 // Start of case 1
                 
-                try(FileWriter writer = new FileWriter (filepath, true)){
+                try(FileWriter writer = new FileWriter (filepath, true)) {
 
                     System.out.print("Enter Last Name: ");
                     String lname = scan.nextLine();
                     scan.nextLine(); 
-                    System.out.println("Enter First Name: ");
+                    System.out.print("Enter First Name: ");
                     String fname = scan.nextLine();
-                    System.out.println("Enter Age: ");
+                    System.out.print("Enter Age: ");
                     int age = scan.nextInt();
                     scan.nextLine(); 
                     System.out.print("Enter Sex: ");
                     String Sex = scan.nextLine();
-            writer.write("last Name: " + lname + ", First Name: " + fname + ", Age: " + age +","+" Sex " + Sex);
+            writer.write( lname + ", " + fname + ", " + age +", " + Sex + "\n");
 
             System.out.println(" Successfully wrote to the file.");
            guest guest1 = new guest(lname, fname, age, Sex);
@@ -58,9 +58,11 @@ while (true) {
         //room selection switch case
         switch(roomchoice) {
             case 1:
+               FileWriter writer1 = new FileWriter (filepath, true);
                 Singleroom single = new Singleroom(guest1);
                 single.guestinfo();
                 single.pay();
+                writer1.write(roomchoice +"\n");
             break;
             case 2:
                 Doubleroom doubleRoom = new Doubleroom(guest1);

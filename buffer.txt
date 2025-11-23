@@ -1,1 +1,2 @@
-last Name: , First Name: ariel, Age: 20, Sex male
+last Name: , First Name: ariel, Age: 20, Sex male, aljun, 18, male, ariel, 20, male
+, ariel, 20, male
