@@ -1,2 +1,1 @@
-
-Name: ariel 
+last Name: , First Name: ariel, Age: 20, Sex male

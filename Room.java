@@ -31,7 +31,9 @@ public class Room {
  
     }
      void pay(){ 
-        System.out.print("Select payment method: 1. Cash 2. Credit Card :");
+        System.out.println("Select payment method: 1. Cash");
+        System.out.println("2. Credit Card");
+        System.out.print(" Enter your choice (1-2): ");
         int paychoice = scan.nextInt();
         switch(paychoice) {
             case 1:
