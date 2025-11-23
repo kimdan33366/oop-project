@@ -1,2 +1,6 @@
-last Name: , First Name: ariel, Age: 20, Sex male, aljun, 18, male, ariel, 20, male
-, ariel, 20, male
+Singleroom: avialiable
+Doubleroom: avialiable
+Suitedroom: avialiable
+
+amit, ariel, 20, male
+alojado, janice, 21, female

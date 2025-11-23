@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args) {
          Scanner scan = new Scanner(System.in);
+         
+String filepath = "C:\\Users\\kimda\\Desktop\\dunno\\oop-Project\\buffer.txt";
+      
 while (true) {
         System.out.println(" welcome to our Hotel Reservation System ");
         System.out.println(" Menu.");
@@ -15,30 +18,28 @@ while (true) {
         
         System.out.print(" Please select an option (1-4): ");
         int choice = scan.nextInt();
-         String filepath = "C:\\Users\\kimda\\Desktop\\dunno\\oop-Project\\buffer.txt";
+        
         switch(choice){
             case 1:
                 // Start of case 1
                 
                 try(FileWriter writer = new FileWriter (filepath, true)) {
 
-                    System.out.print("Enter Last Name: ");
-                    String lname = scan.nextLine();
-                    scan.nextLine(); 
+                    
                     System.out.print("Enter First Name: ");
-                    String fname = scan.nextLine();
+                    String fname = scan.next();
+                    System.out.print("Enter Last Name: ");
+                    String lname = scan.next();
                     System.out.print("Enter Age: ");
                     int age = scan.nextInt();
                     scan.nextLine(); 
                     System.out.print("Enter Sex: ");
                     String Sex = scan.nextLine();
-            writer.write( lname + ", " + fname + ", " + age +", " + Sex + "\n");
+            writer.write(  lname + ", " + fname + ", " + age + ", "+ Sex+"\n");
 
             System.out.println(" Successfully wrote to the file.");
            guest guest1 = new guest(lname, fname, age, Sex);
 
-
-        
 
         System.out.println("Guest Information: ");
         System.out.println("Last Name: " + guest1.getLname());  
@@ -55,25 +56,44 @@ while (true) {
        
          System.out.print(" Select a room type (1-3): ");
         int roomchoice = scan.nextInt();
+
         //room selection switch case
         switch(roomchoice) {
             case 1:
-               FileWriter writer1 = new FileWriter (filepath, true);
+                 if (!RoomManager.isRoomAvailable(filepath, "SingleRoom")) {
+            System.out.println("Sorry, Single Room is already booked.");
+            
+        }else{
                 Singleroom single = new Singleroom(guest1);
                 single.guestinfo();
                 single.pay();
-                writer1.write(roomchoice +"\n");
+                RoomManager.updateRoomStatus(filepath, "SingleRoom");
+
+       
             break;
+        }
             case 2:
+                    if (!RoomManager.isRoomAvailable(filepath, "DoubleRoom")) {
+            System.out.println("Sorry, Double Room is already booked.");    
+        }else{
                 Doubleroom doubleRoom = new Doubleroom(guest1);
                 doubleRoom.guestinfo();
                 doubleRoom.pay();
+                RoomManager.updateRoomStatus(filepath, "DoubleRoom");
+                
+
              break;
+        }
             case 3:
+                    if (!RoomManager.isRoomAvailable(filepath, "SuiteRoom")) {
+            System.out.println("Sorry, Suite Room is already booked.");
+        }else{
             Suiteroom suite = new Suiteroom(guest1);
                 suite.guestinfo();
                 suite.pay();
+                RoomManager.updateRoomStatus(filepath, "SuiteRoom");
              break;
+        }
             default:
                 System.out.println("Invalid choice.");
             break;
@@ -86,9 +106,6 @@ while (true) {
     // End of case 1
             break;
             case 2:
-                
-        
-        System.out.print(" Enter text to write to the file: ");
         String inputText = scan.nextLine();
         try( BufferedReader reader = new BufferedReader(new FileReader (filepath))) {
             String line;
